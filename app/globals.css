@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fbf7f2;
+  --foreground: #2a1a12;
+  --surface: #ffffff;
+  --surface-muted: #f1e7db;
+  --border: #e7dbca;
+  --accent: #e8703a;
+  --accent-strong: #c8501e;
+  --accent-soft: #fde9db;
+  --success: #2f8f5b;
+  --danger: #cc4949;
+  --muted-foreground: #7a6a5a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-muted-foreground: var(--muted-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #17110c;
+    --foreground: #f3e9dd;
+    --surface: #211811;
+    --surface-muted: #2a1f17;
+    --border: #3a2c1f;
+    --accent: #f2874a;
+    --accent-strong: #ff9f5c;
+    --accent-soft: #3a2416;
+    --muted-foreground: #b6a693;
   }
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  height: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  min-height: 100%;
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+input,
+select,
+textarea {
+  font-size: 16px;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-accent px-5 py-3 text-sm font-semibold text-white transition-colors active:bg-accent-strong disabled:opacity-50;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-surface px-5 py-3 text-sm font-semibold text-foreground transition-colors active:bg-surface-muted disabled:opacity-50;
+  }
+  .card {
+    @apply rounded-2xl border border-border bg-surface p-4;
+  }
+  .field-label {
+    @apply mb-1.5 block text-sm font-medium text-foreground;
+  }
+  .field-input {
+    @apply w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm outline-none focus:border-accent;
+  }
 }
