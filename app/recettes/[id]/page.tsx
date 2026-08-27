@@ -94,25 +94,25 @@ export default function RecipeDetailPage() {
       <div className="px-5 pt-5">
         <div className="mb-1 flex flex-wrap items-center gap-2">
           {match.canMakeNow ? (
-            <span className="inline-flex items-center gap-1 rounded-full bg-success/15 px-2.5 py-1 text-xs font-semibold text-success">
+            <span className="inline-flex items-center gap-1 rounded-full bg-success/15 px-3 py-1.5 text-sm font-semibold text-success">
               ✓ Réalisable maintenant
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2.5 py-1 text-xs font-semibold text-accent-strong">
+            <span className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-accent-strong">
               Il te manque {match.missingAlcohol.length + match.missingCondiments.length} ingrédient(s)
             </span>
           )}
           {recipe.source === "ai" && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-surface-muted px-2.5 py-1 text-xs font-semibold text-muted-foreground">
+            <span className="inline-flex items-center gap-1 rounded-full bg-surface-muted px-3 py-1.5 text-sm font-semibold text-muted-foreground">
               ✨ Création IA
             </span>
           )}
         </div>
-        <h1 className="text-2xl font-bold tracking-tight">{recipe.name}</h1>
-        {recipe.glass && <p className="mt-0.5 text-sm text-muted-foreground">Servi dans : {recipe.glass}</p>}
+        <h1 className="font-display text-3xl font-semibold tracking-tight">{recipe.name}</h1>
+        {recipe.glass && <p className="mt-1 text-base text-muted-foreground">Servi dans : {recipe.glass}</p>}
 
-        <section className="mt-5">
-          <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+        <section className="mt-6">
+          <h2 className="font-display mb-2 text-lg font-semibold text-muted-foreground">
             Ingrédients
           </h2>
           <ul className="flex flex-col gap-2">
@@ -121,20 +121,22 @@ export default function RecipeDetailPage() {
                 ? !match.missingAlcohol.includes(ing)
                 : !ing.category || !match.missingCondiments.includes(ing);
               return (
-                <li key={i} className="card flex items-center justify-between gap-3 py-2.5">
+                <li key={i} className="card flex items-center justify-between gap-3 py-3">
                   <div className="min-w-0">
-                    <p className={`truncate text-sm font-medium ${!owned ? "text-danger" : ""}`}>
+                    <p className={`truncate text-lg font-medium ${!owned ? "text-danger" : ""}`}>
                       {ing.rawName}
                     </p>
                     {ing.category && (
-                      <p className="text-xs text-muted-foreground">{categoryLabel(ing.category)}</p>
+                      <p className="text-sm text-muted-foreground">{categoryLabel(ing.category)}</p>
                     )}
                   </div>
                   <div className="flex shrink-0 items-center gap-2">
                     {ing.measureRaw && (
-                      <span className="text-xs text-muted-foreground">{ing.measureRaw}</span>
+                      <span className="text-sm text-muted-foreground">{ing.measureRaw}</span>
                     )}
-                    <span className={owned ? "text-success" : "text-danger"}>{owned ? "✓" : "✕"}</span>
+                    <span className={`text-lg ${owned ? "text-success" : "text-danger"}`}>
+                      {owned ? "✓" : "✕"}
+                    </span>
                   </div>
                 </li>
               );
@@ -142,21 +144,21 @@ export default function RecipeDetailPage() {
           </ul>
         </section>
 
-        <section className="mt-5">
-          <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+        <section className="mt-6">
+          <h2 className="font-display mb-2 text-lg font-semibold text-muted-foreground">
             Préparation
           </h2>
-          <p className="whitespace-pre-line text-sm leading-relaxed">{recipe.instructions}</p>
+          <p className="whitespace-pre-line text-lg leading-relaxed">{recipe.instructions}</p>
         </section>
 
         <button
           onClick={handlePrepare}
           disabled={preparing}
-          className="btn-primary mt-6 w-full py-4 text-base"
+          className="btn-primary mt-6 w-full py-4 text-lg"
         >
           {preparing ? "…" : "J'ai préparé ce cocktail 🍸"}
         </button>
-        <p className="mt-2 text-center text-xs text-muted-foreground">
+        <p className="mt-2 text-center text-sm text-muted-foreground">
           Le stock des bouteilles utilisées sera automatiquement mis à jour.
         </p>
       </div>

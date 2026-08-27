@@ -33,7 +33,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         {items.map((t) => (
           <div
             key={t.id}
-            className={`pointer-events-auto w-full max-w-sm rounded-2xl px-4 py-3 text-sm font-medium shadow-lg ${
+            className={`pointer-events-auto w-full max-w-sm rounded-2xl px-4 py-3 text-base font-medium shadow-lg ${
               t.variant === "success"
                 ? "bg-success text-white"
                 : t.variant === "error"

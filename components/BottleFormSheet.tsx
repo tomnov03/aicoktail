@@ -72,7 +72,7 @@ export function BottleFormSheet({ open, onClose, initial, onSave, onDelete }: Pr
 
         <div>
           <span className="field-label">Type d&apos;alcool</span>
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-3 gap-2">
             {ALCOHOL_CATEGORIES.filter((c) => c.id !== "autre_alcool").map((c) => (
               <button
                 key={c.id}
@@ -163,7 +163,7 @@ export function BottleFormSheet({ open, onClose, initial, onSave, onDelete }: Pr
                 onChange={(e) => setRemainingMl(Number(e.target.value))}
                 className="w-full accent-[var(--accent)]"
               />
-              <p className="mt-1 text-center text-sm text-muted-foreground">
+              <p className="mt-1 text-center text-base text-muted-foreground">
                 {Math.round(Math.min(remainingMl, volumeMl))} ml restants sur {volumeMl} ml
               </p>
             </div>
@@ -180,7 +180,7 @@ export function BottleFormSheet({ open, onClose, initial, onSave, onDelete }: Pr
               onDelete();
               onClose();
             }}
-            className="w-full py-2 text-sm font-medium text-danger"
+            className="w-full py-2 text-base font-medium text-danger"
           >
             Supprimer cette bouteille
           </button>

@@ -27,8 +27,8 @@ export default function ParametresPage() {
 
       <div className="flex-1 space-y-4 px-5 pb-6">
         <div className="card">
-          <h2 className="mb-1 font-semibold">Stockage des données</h2>
-          <p className="text-sm text-muted-foreground">
+          <h2 className="font-display mb-1 text-lg font-semibold">Stockage des données</h2>
+          <p className="text-base text-muted-foreground">
             Ta cave, tes condiments et ton historique sont stockés uniquement sur cet appareil
             (localStorage du navigateur). Rien n&apos;est envoyé à un serveur. Si tu changes de
             téléphone ou vides le cache, ces données sont perdues.
@@ -36,8 +36,8 @@ export default function ParametresPage() {
         </div>
 
         <div className="card">
-          <h2 className="mb-1 font-semibold">Génération IA</h2>
-          <p className="text-sm text-muted-foreground">
+          <h2 className="font-display mb-1 text-lg font-semibold">Génération IA</h2>
+          <p className="text-base text-muted-foreground">
             Statut :{" "}
             {aiEnabled === null ? (
               "vérification…"
@@ -48,18 +48,18 @@ export default function ParametresPage() {
             )}
           </p>
           {aiEnabled === false && (
-            <p className="mt-2 text-sm text-muted-foreground">
+            <p className="mt-2 text-base text-muted-foreground">
               L&apos;appli fonctionne très bien sans. Si un jour tu veux l&apos;activer (nécessite ta
               propre clé, payante), ajoute la variable d&apos;environnement{" "}
-              <code className="rounded bg-surface-muted px-1 py-0.5 text-xs">ANTHROPIC_API_KEY</code>{" "}
+              <code className="rounded bg-surface-muted px-1 py-0.5 text-sm">ANTHROPIC_API_KEY</code>{" "}
               dans les paramètres de ton projet Vercel. Voir le README du dépôt.
             </p>
           )}
         </div>
 
         <div className="card">
-          <h2 className="mb-1 font-semibold">Recettes classiques</h2>
-          <p className="text-sm text-muted-foreground">
+          <h2 className="font-display mb-1 text-lg font-semibold">Recettes classiques</h2>
+          <p className="text-base text-muted-foreground">
             Les recettes classiques proviennent de{" "}
             <a
               href="https://www.thecocktaildb.com/"
@@ -74,8 +74,8 @@ export default function ParametresPage() {
         </div>
 
         <div className="card">
-          <h2 className="mb-1 font-semibold text-danger">Zone de danger</h2>
-          <p className="mb-3 text-sm text-muted-foreground">
+          <h2 className="font-display mb-1 text-lg font-semibold text-danger">Zone de danger</h2>
+          <p className="mb-3 text-base text-muted-foreground">
             Efface ta cave, tes condiments et ton historique de cet appareil.
           </p>
           {confirming ? (

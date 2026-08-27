@@ -7,7 +7,7 @@ export function StockBar({ remainingMl, volumeMl }: { remainingMl: number; volum
       <div className="h-2 w-full overflow-hidden rounded-full bg-surface-muted">
         <div className={`h-full rounded-full ${color} transition-all`} style={{ width: `${pct}%` }} />
       </div>
-      <p className="mt-1 text-xs text-muted-foreground">
+      <p className="mt-1.5 text-sm text-muted-foreground">
         {Math.round(remainingMl)} ml restants sur {Math.round(volumeMl)} ml
       </p>
     </div>

@@ -52,7 +52,7 @@ export default function CommencerPage() {
             <span className="text-3xl">🧊</span>
             <div className="flex-1">
               <p className="font-display font-semibold">Ajoute tes bouteilles</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-base text-muted-foreground">
                 Il faut d&apos;abord savoir ce que tu as pour te proposer des recettes.
               </p>
             </div>
@@ -63,7 +63,7 @@ export default function CommencerPage() {
             <span className="text-3xl">🍹</span>
             <div className="flex-1">
               <p className="font-display font-semibold">Cocktails avec ma cave</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-base text-muted-foreground">
                 Classés selon ce que tu as déjà chez toi ({bottles.length} bouteille
                 {bottles.length > 1 ? "s" : ""}).
               </p>
@@ -80,7 +80,7 @@ export default function CommencerPage() {
           <span className="text-3xl">🎲</span>
           <div className="flex-1">
             <p className="font-display font-semibold">Surprends-moi</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-muted-foreground">
               {surprising ? "On te trouve quelque chose…" : "Un cocktail choisi au hasard pour toi"}
             </p>
           </div>
@@ -91,7 +91,7 @@ export default function CommencerPage() {
           <span className="text-3xl">🧺</span>
           <div className="flex-1">
             <p className="font-display font-semibold">Gérer ma cave</p>
-            <p className="text-sm text-muted-foreground">Ajoute ou modifie tes bouteilles et condiments.</p>
+            <p className="text-base text-muted-foreground">Ajoute ou modifie tes bouteilles et condiments.</p>
           </div>
           <Arrow />
         </Link>

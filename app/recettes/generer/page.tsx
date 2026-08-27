@@ -52,9 +52,9 @@ export default function GenererPage() {
           <div className="card flex flex-col items-center gap-3 py-8 text-center">
             <span className="text-3xl">🔒</span>
             <p className="font-semibold">Fonction IA non configurée</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-muted-foreground">
               L&apos;administrateur du déploiement doit ajouter la variable d&apos;environnement{" "}
-              <code className="rounded bg-surface-muted px-1 py-0.5 text-xs">ANTHROPIC_API_KEY</code> côté serveur
+              <code className="rounded bg-surface-muted px-1 py-0.5 text-sm">ANTHROPIC_API_KEY</code> côté serveur
               (jamais dans le code, voir le README) pour activer la génération de recettes originales.
             </p>
             <Link href="/recettes" className="btn-secondary mt-1 w-full">
@@ -65,7 +65,7 @@ export default function GenererPage() {
           <div className="card flex flex-col items-center gap-3 py-8 text-center">
             <span className="text-3xl">🧊</span>
             <p className="font-semibold">Ajoute d&apos;abord une bouteille</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-muted-foreground">
               L&apos;IA a besoin de connaître au moins un alcool de ta cave pour inventer une recette.
             </p>
             <Link href="/cave" className="btn-primary mt-1 w-full">
@@ -74,7 +74,7 @@ export default function GenererPage() {
           </div>
         ) : (
           <>
-            <p className="mb-4 text-sm text-muted-foreground">
+            <p className="mb-4 text-base text-muted-foreground">
               L&apos;IA va inventer un cocktail original à partir de tes {bottles.length} bouteille
               {bottles.length > 1 ? "s" : ""} et {condiments.length} condiment{condiments.length > 1 ? "s" : ""}.
             </p>
@@ -83,23 +83,23 @@ export default function GenererPage() {
             </button>
 
             {errorMsg && (
-              <p className="mt-3 rounded-xl bg-danger/10 px-3 py-2 text-sm text-danger">{errorMsg}</p>
+              <p className="mt-3 rounded-xl bg-danger/10 px-3 py-2 text-base text-danger">{errorMsg}</p>
             )}
 
             {result && (
               <div className="card mt-5">
                 <div className="mb-2 flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-surface-muted px-2.5 py-1 text-xs font-semibold text-muted-foreground">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-surface-muted px-2.5 py-1 text-sm font-semibold text-muted-foreground">
                     ✨ Création IA
                   </span>
                 </div>
-                <h2 className="text-xl font-bold">{result.name}</h2>
-                {result.glass && <p className="text-sm text-muted-foreground">Servi dans : {result.glass}</p>}
+                <h2 className="font-display text-2xl font-semibold">{result.name}</h2>
+                {result.glass && <p className="text-base text-muted-foreground">Servi dans : {result.glass}</p>}
 
-                <h3 className="mb-1.5 mt-4 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                <h3 className="font-display mb-1.5 mt-4 text-base font-semibold uppercase tracking-wide text-muted-foreground">
                   Ingrédients
                 </h3>
-                <ul className="flex flex-col gap-1 text-sm">
+                <ul className="flex flex-col gap-1 text-lg">
                   {result.ingredients.map((ing, i) => (
                     <li key={i} className="flex justify-between gap-2">
                       <span>{ing.rawName}</span>
@@ -108,10 +108,10 @@ export default function GenererPage() {
                   ))}
                 </ul>
 
-                <h3 className="mb-1.5 mt-4 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                <h3 className="font-display mb-1.5 mt-4 text-base font-semibold uppercase tracking-wide text-muted-foreground">
                   Préparation
                 </h3>
-                <p className="whitespace-pre-line text-sm leading-relaxed">{result.instructions}</p>
+                <p className="whitespace-pre-line text-lg leading-relaxed">{result.instructions}</p>
 
                 <Link href={`/recettes/${result.id}`} className="btn-primary mt-4 w-full">
                   Voir la fiche complète

@@ -73,12 +73,12 @@ export default function CavePage() {
                             {categoryEmoji(b.category)}
                           </span>
                           <div className="min-w-0">
-                            <p className="truncate font-semibold">{b.name}</p>
-                            <p className="text-xs text-muted-foreground">{categoryLabel(b.category)}</p>
+                            <p className="truncate text-lg font-semibold">{b.name}</p>
+                            <p className="text-sm text-muted-foreground">{categoryLabel(b.category)}</p>
                           </div>
                         </div>
                         {b.remainingMl <= 0 && (
-                          <span className="shrink-0 rounded-full bg-danger/15 px-2 py-0.5 text-xs font-medium text-danger">
+                          <span className="shrink-0 rounded-full bg-danger/15 px-2.5 py-1 text-sm font-medium text-danger">
                             Vide
                           </span>
                         )}
@@ -106,8 +106,8 @@ export default function CavePage() {
                         {categoryEmoji(c.category)}
                       </span>
                       <div>
-                        <p className="font-medium">{c.name}</p>
-                        <p className="text-xs text-muted-foreground">{categoryLabel(c.category)}</p>
+                        <p className="text-lg font-medium">{c.name}</p>
+                        <p className="text-sm text-muted-foreground">{categoryLabel(c.category)}</p>
                       </div>
                     </div>
                     <button
@@ -158,7 +158,7 @@ function TabButton({
   return (
     <button
       onClick={onClick}
-      className={`flex-1 rounded-xl py-2 text-sm font-semibold transition-colors ${
+      className={`flex-1 rounded-xl py-2.5 text-base font-semibold transition-colors ${
         active ? "bg-surface text-accent-strong shadow-sm" : "text-muted-foreground"
       }`}
     >
@@ -169,7 +169,7 @@ function TabButton({
 
 function EmptyHint({ text }: { text: string }) {
   return (
-    <div className="card flex flex-col items-center gap-2 py-8 text-center text-sm text-muted-foreground">
+    <div className="card flex flex-col items-center gap-2 py-8 text-center text-base text-muted-foreground">
       <span className="text-3xl">🗄️</span>
       {text}
     </div>

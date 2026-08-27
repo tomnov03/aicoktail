@@ -25,7 +25,7 @@ export default function HistoriquePage() {
           <div className="card flex flex-col items-center gap-3 py-10 text-center">
             <span className="text-3xl">📖</span>
             <p className="font-semibold">Rien préparé pour l&apos;instant</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-muted-foreground">
               Chaque cocktail que tu prépares apparaîtra ici, avec la mise à jour de ta cave.
             </p>
             <Link href="/recettes" className="btn-primary mt-1 w-full">
@@ -47,13 +47,13 @@ export default function HistoriquePage() {
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-semibold">{entry.recipeName}</p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-sm text-muted-foreground">
                       {dateFormatter.format(new Date(entry.madeAt))}
                     </p>
                   </div>
                 </div>
                 {entry.consumedMl.length > 0 && (
-                  <ul className="mt-2 border-t border-border pt-2 text-xs text-muted-foreground">
+                  <ul className="mt-2 border-t border-border pt-2 text-sm text-muted-foreground">
                     {entry.consumedMl.map((c, i) => (
                       <li key={i}>
                         −{Math.round(c.ml)} ml de {c.bottleName}

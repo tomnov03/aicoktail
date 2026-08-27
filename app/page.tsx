@@ -14,13 +14,13 @@ export default function Home() {
         <br />
         se prépare ?
       </h1>
-      <p className="mt-3 max-w-xs text-sm text-muted-foreground">
+      <p className="mt-3 max-w-xs text-lg text-muted-foreground">
         Des recettes trouvées pour toi à partir de ce qu&apos;il y a dans ta cave.
       </p>
 
       <Link
         href="/commencer"
-        className="btn-primary mt-8 w-full max-w-xs py-4 text-base shadow-lg shadow-accent/20"
+        className="btn-primary mt-8 w-full max-w-xs py-4 text-lg shadow-lg shadow-accent/20"
       >
         🍹 Faire un cocktail
       </Link>

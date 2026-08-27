@@ -39,6 +39,8 @@ export type CondimentCategoryId =
   | "tonic"
   | "ginger_beer"
   | "cola"
+  | "energy_drink"
+  | "jus_pomme"
   | "citron_vert_frais"
   | "citron_frais"
   | "menthe_fraiche"

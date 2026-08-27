@@ -38,7 +38,7 @@ export function Sheet({
       <div className="safe-bottom relative z-10 w-full max-w-md rounded-t-3xl border-t border-border bg-surface p-5 shadow-2xl">
         <div className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-border" />
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold">{title}</h2>
+          <h2 className="font-display text-xl font-semibold">{title}</h2>
           <button
             onClick={onClose}
             className="rounded-full p-1.5 text-muted-foreground hover:bg-surface-muted"

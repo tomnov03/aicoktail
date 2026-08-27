@@ -19,22 +19,22 @@ export function RecipeCard({ match }: { match: RecipeMatch }) {
         )}
       </div>
       <div className="min-w-0 flex-1">
-        <p className="truncate font-semibold">{recipe.name}</p>
-        <p className="mt-0.5 truncate text-xs text-muted-foreground">
+        <p className="font-display truncate text-lg font-semibold">{recipe.name}</p>
+        <p className="mt-0.5 truncate text-sm text-muted-foreground">
           {recipe.glass || (recipe.source === "ai" ? "Création IA" : "Cocktail")}
         </p>
-        <div className="mt-1.5">
+        <div className="mt-2 flex flex-wrap gap-1.5">
           {canMakeNow ? (
-            <span className="inline-flex items-center gap-1 rounded-full bg-success/15 px-2 py-0.5 text-xs font-medium text-success">
+            <span className="inline-flex items-center gap-1 rounded-full bg-success/15 px-2.5 py-1 text-sm font-medium text-success">
               ✓ Réalisable maintenant
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent-strong">
+            <span className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2.5 py-1 text-sm font-medium text-accent-strong">
               {missingCount} ingrédient{missingCount > 1 ? "s" : ""} manquant{missingCount > 1 ? "s" : ""}
             </span>
           )}
           {recipe.source === "ai" && (
-            <span className="ml-1.5 inline-flex items-center gap-1 rounded-full bg-surface-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
+            <span className="inline-flex items-center gap-1 rounded-full bg-surface-muted px-2.5 py-1 text-sm font-medium text-muted-foreground">
               ✨ IA
             </span>
           )}

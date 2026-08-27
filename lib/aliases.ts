@@ -18,7 +18,7 @@ export const ALCOHOL_CATEGORIES: CategoryDef[] = [
   },
   {
     id: "rhum_ambre",
-    label: "Rhum ambré / brun",
+    label: "Rhum ambré",
     keywords: [
       "rhum ambre",
       "rhum ambré",
@@ -51,19 +51,19 @@ export const ALCOHOL_CATEGORIES: CategoryDef[] = [
   },
   {
     id: "whisky",
-    label: "Whisky / Bourbon",
+    label: "Whisky",
     keywords: ["whisky", "whiskey", "bourbon", "scotch", "rye"],
     cocktailDbNames: ["Whiskey", "Bourbon", "Scotch"],
   },
   {
     id: "cognac_brandy",
-    label: "Cognac / Brandy",
+    label: "Cognac",
     keywords: ["cognac", "brandy", "armagnac"],
     cocktailDbNames: ["Brandy", "Cognac"],
   },
   {
     id: "triple_sec",
-    label: "Triple sec / Curaçao",
+    label: "Triple sec",
     keywords: ["triple sec", "cointreau", "curacao", "curaçao", "orange liqueur", "grand marnier"],
     cocktailDbNames: ["Triple sec", "Cointreau", "Blue Curacao", "Grand Marnier"],
   },
@@ -105,7 +105,7 @@ export const ALCOHOL_CATEGORIES: CategoryDef[] = [
   },
   {
     id: "malibu",
-    label: "Rhum coco (Malibu)",
+    label: "Malibu",
     keywords: ["malibu", "rhum coco", "coconut rum"],
     cocktailDbNames: ["Malibu rum", "Coconut Rum"],
   },
@@ -117,13 +117,13 @@ export const ALCOHOL_CATEGORIES: CategoryDef[] = [
   },
   {
     id: "aperol_campari",
-    label: "Apéritif italien (Aperol / Campari)",
+    label: "Aperol / Campari",
     keywords: ["aperol", "campari"],
     cocktailDbNames: ["Aperol", "Campari"],
   },
   {
     id: "champagne_mousseux",
-    label: "Champagne / vin mousseux",
+    label: "Champagne",
     keywords: ["champagne", "prosecco", "vin mousseux", "cava", "sparkling wine"],
     cocktailDbNames: ["Champagne", "Prosecco", "Cava"],
   },
@@ -191,7 +191,7 @@ export const CONDIMENT_CATEGORIES: CategoryDef[] = [
   },
   {
     id: "jus_pamplemousse",
-    label: "Jus de pamplemousse",
+    label: "Jus pamplemousse",
     keywords: ["pamplemousse", "grapefruit"],
     cocktailDbNames: ["Grapefruit juice"],
   },
@@ -203,7 +203,7 @@ export const CONDIMENT_CATEGORIES: CategoryDef[] = [
   },
   {
     id: "sirop_sucre",
-    label: "Sirop de sucre de canne",
+    label: "Sirop de sucre",
     keywords: ["sirop de sucre", "sirop de canne", "simple syrup", "sugar syrup", "gomme"],
     cocktailDbNames: ["Simple syrup", "Sugar syrup"],
   },
@@ -227,7 +227,7 @@ export const CONDIMENT_CATEGORIES: CategoryDef[] = [
   },
   {
     id: "soda",
-    label: "Eau gazeuse / soda water",
+    label: "Eau gazeuse",
     keywords: ["soda", "club soda", "eau gazeuse", "soda water"],
     cocktailDbNames: ["Soda water", "Club soda"],
   },
@@ -239,7 +239,7 @@ export const CONDIMENT_CATEGORIES: CategoryDef[] = [
   },
   {
     id: "ginger_beer",
-    label: "Ginger beer / ginger ale",
+    label: "Ginger beer",
     keywords: ["ginger beer", "ginger ale", "gingembre"],
     cocktailDbNames: ["Ginger beer", "Ginger ale"],
   },
@@ -248,6 +248,18 @@ export const CONDIMENT_CATEGORIES: CategoryDef[] = [
     label: "Cola",
     keywords: ["cola", "coca"],
     cocktailDbNames: ["Coca-Cola", "Cola"],
+  },
+  {
+    id: "energy_drink",
+    label: "Red Bull",
+    keywords: ["red bull", "redbull", "energy drink", "boisson energisante", "boisson énergisante", "monster"],
+    cocktailDbNames: ["Red Bull", "Energy drink"],
+  },
+  {
+    id: "jus_pomme",
+    label: "Jus de pomme",
+    keywords: ["jus de pomme", "apple juice"],
+    cocktailDbNames: ["Apple juice"],
   },
   {
     id: "citron_vert_frais",
@@ -391,6 +403,8 @@ const CATEGORY_EMOJI: Partial<Record<AlcoholCategoryId | CondimentCategoryId, st
   tonic: "🫧",
   ginger_beer: "🫚",
   cola: "🥤",
+  energy_drink: "⚡",
+  jus_pomme: "🍏",
   citron_vert_frais: "🟢",
   citron_frais: "🍋",
   menthe_fraiche: "🌿",

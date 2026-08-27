@@ -100,7 +100,7 @@ export default function RecettesPage() {
         />
 
         {!searchResults && (
-          <label className="mb-4 flex items-center gap-2 text-sm font-medium">
+          <label className="mb-4 flex items-center gap-2 text-base font-medium">
             <input
               type="checkbox"
               checked={onlyMakeable}
@@ -117,7 +117,7 @@ export default function RecettesPage() {
           <div className="card flex flex-col items-center gap-3 py-10 text-center">
             <span className="text-3xl">🍾</span>
             <p className="font-semibold">Ajoute d&apos;abord tes bouteilles</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-muted-foreground">
               On te proposera des recettes dès que ta cave contient au moins un alcool.
             </p>
             <Link href="/cave" className="btn-primary mt-1 w-full">
@@ -125,16 +125,16 @@ export default function RecettesPage() {
             </Link>
           </div>
         ) : loading || searching ? (
-          <div className="flex flex-col items-center gap-2 py-16 text-sm text-muted-foreground">
+          <div className="flex flex-col items-center gap-2 py-16 text-base text-muted-foreground">
             <Spinner />
             Recherche des recettes en cours…
           </div>
         ) : errored ? (
-          <div className="card py-8 text-center text-sm text-muted-foreground">
+          <div className="card py-8 text-center text-base text-muted-foreground">
             Impossible de contacter TheCocktailDB pour le moment. Réessaie un peu plus tard.
           </div>
         ) : visible.length === 0 ? (
-          <div className="card py-8 text-center text-sm text-muted-foreground">
+          <div className="card py-8 text-center text-base text-muted-foreground">
             Aucun résultat pour le moment. Essaie de décocher le filtre, ou ajoute d&apos;autres
             bouteilles à ta cave.
           </div>

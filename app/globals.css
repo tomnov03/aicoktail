@@ -44,6 +44,9 @@
 
 html {
   height: 100%;
+  /* Base plus grande pour une lecture rapide sur mobile : tout le reste (text-sm,
+     text-lg, paddings en rem, ...) suit proportionnellement. */
+  font-size: 114%;
 }
 
 body {
@@ -73,22 +76,22 @@ textarea {
 
 @layer components {
   .btn-primary {
-    @apply font-display inline-flex items-center justify-center gap-2 rounded-2xl bg-accent px-5 py-3 text-sm font-semibold text-white shadow-sm transition-transform active:scale-[0.98] active:bg-accent-strong disabled:opacity-50;
+    @apply font-display inline-flex items-center justify-center gap-2 rounded-2xl bg-accent px-5 py-3 text-base font-semibold text-white shadow-sm transition-transform active:scale-[0.98] active:bg-accent-strong disabled:opacity-50;
   }
   .btn-secondary {
-    @apply font-display inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-surface px-5 py-3 text-sm font-semibold text-foreground transition-colors active:bg-surface-muted disabled:opacity-50;
+    @apply font-display inline-flex items-center justify-center gap-2 rounded-2xl border border-border bg-surface px-5 py-3 text-base font-semibold text-foreground transition-colors active:bg-surface-muted disabled:opacity-50;
   }
   .card {
     @apply rounded-2xl border border-border bg-surface p-4 shadow-[0_1px_3px_rgba(15,23,26,0.05)];
   }
   .field-label {
-    @apply mb-1.5 block text-sm font-medium text-foreground;
+    @apply mb-2 block text-base font-semibold text-foreground;
   }
   .field-input {
-    @apply w-full rounded-xl border border-border bg-white px-3.5 py-2.5 text-sm outline-none focus:border-accent;
+    @apply w-full rounded-xl border border-border bg-white px-3.5 py-3 text-base outline-none focus:border-accent;
   }
   .chip {
-    @apply flex flex-col items-center gap-1 rounded-2xl border-2 border-border bg-white px-2 py-2.5 text-center text-xs font-medium transition-colors;
+    @apply flex flex-col items-center gap-1 break-words rounded-2xl border-2 border-border bg-white px-2 py-3 text-center text-sm font-medium leading-snug transition-colors;
   }
   .chip-selected {
     @apply border-accent bg-accent-soft text-accent-strong;

@@ -39,7 +39,7 @@ export function CondimentFormSheet({ open, onClose, onSave }: Props) {
       <form onSubmit={submit} className="flex flex-col gap-5">
         <div>
           <span className="field-label">Qu&apos;as-tu ajouté ?</span>
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-3 gap-2">
             {CONDIMENT_CATEGORIES.filter((c) => c.id !== "autre_condiment").map((c) => (
               <button
                 key={c.id}
