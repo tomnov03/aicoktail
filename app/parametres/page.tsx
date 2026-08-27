@@ -44,15 +44,15 @@ export default function ParametresPage() {
             ) : aiEnabled ? (
               <span className="font-medium text-success">activée</span>
             ) : (
-              <span className="font-medium text-danger">désactivée</span>
+              <span className="font-medium text-muted-foreground">désactivée</span>
             )}
           </p>
           {aiEnabled === false && (
             <p className="mt-2 text-sm text-muted-foreground">
-              Pour l&apos;activer, ajoute la variable d&apos;environnement{" "}
+              L&apos;appli fonctionne très bien sans. Si un jour tu veux l&apos;activer (nécessite ta
+              propre clé, payante), ajoute la variable d&apos;environnement{" "}
               <code className="rounded bg-surface-muted px-1 py-0.5 text-xs">ANTHROPIC_API_KEY</code>{" "}
-              dans les paramètres de ton projet Vercel (jamais dans le code source). Voir le README du
-              dépôt.
+              dans les paramètres de ton projet Vercel. Voir le README du dépôt.
             </p>
           )}
         </div>

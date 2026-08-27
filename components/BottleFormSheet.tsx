@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Sheet } from "@/components/Sheet";
-import { ALCOHOL_CATEGORIES } from "@/lib/aliases";
+import { ALCOHOL_CATEGORIES, categoryEmoji } from "@/lib/aliases";
 import type { AlcoholCategoryId, Bottle } from "@/lib/types";
 
 interface Props {
@@ -18,18 +18,25 @@ interface Props {
   onDelete?: () => void;
 }
 
+const VOLUME_PRESETS = [350, 500, 700, 750, 1000];
+
 export function BottleFormSheet({ open, onClose, initial, onSave, onDelete }: Props) {
   const [name, setName] = useState("");
   const [category, setCategory] = useState<AlcoholCategoryId>("rhum_blanc");
   const [volumeMl, setVolumeMl] = useState(700);
+  const [customVolume, setCustomVolume] = useState(false);
   const [remainingMl, setRemainingMl] = useState(700);
+  const [fullBottle, setFullBottle] = useState(true);
 
   useEffect(() => {
     if (open) {
+      const vol = initial?.volumeMl ?? 700;
       setName(initial?.name ?? "");
       setCategory(initial?.category ?? "rhum_blanc");
-      setVolumeMl(initial?.volumeMl ?? 700);
-      setRemainingMl(initial?.remainingMl ?? initial?.volumeMl ?? 700);
+      setVolumeMl(vol);
+      setCustomVolume(!VOLUME_PRESETS.includes(vol));
+      setRemainingMl(initial?.remainingMl ?? vol);
+      setFullBottle(initial ? initial.remainingMl >= initial.volumeMl : true);
     }
   }, [open, initial]);
 
@@ -40,14 +47,14 @@ export function BottleFormSheet({ open, onClose, initial, onSave, onDelete }: Pr
       name: name.trim(),
       category,
       volumeMl,
-      remainingMl: Math.min(remainingMl, volumeMl),
+      remainingMl: Math.min(fullBottle ? volumeMl : remainingMl, volumeMl),
     });
     onClose();
   }
 
   return (
     <Sheet open={open} onClose={onClose} title={initial ? "Modifier la bouteille" : "Ajouter une bouteille"}>
-      <form onSubmit={submit} className="flex flex-col gap-4">
+      <form onSubmit={submit} className="flex flex-col gap-5">
         <div>
           <label className="field-label" htmlFor="bottle-name">
             Nom de la bouteille
@@ -59,58 +66,112 @@ export function BottleFormSheet({ open, onClose, initial, onSave, onDelete }: Pr
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            autoFocus
           />
         </div>
 
         <div>
-          <label className="field-label" htmlFor="bottle-category">
-            Type d&apos;alcool
-          </label>
-          <select
-            id="bottle-category"
-            className="field-input"
-            value={category}
-            onChange={(e) => setCategory(e.target.value as AlcoholCategoryId)}
-          >
-            {ALCOHOL_CATEGORIES.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.label}
-              </option>
+          <span className="field-label">Type d&apos;alcool</span>
+          <div className="grid grid-cols-4 gap-2">
+            {ALCOHOL_CATEGORIES.filter((c) => c.id !== "autre_alcool").map((c) => (
+              <button
+                key={c.id}
+                type="button"
+                onClick={() => setCategory(c.id as AlcoholCategoryId)}
+                className={`chip ${category === c.id ? "chip-selected" : ""}`}
+              >
+                <span className="text-xl leading-none">{categoryEmoji(c.id)}</span>
+                <span className="leading-tight">{c.label}</span>
+              </button>
             ))}
-          </select>
+            <button
+              type="button"
+              onClick={() => setCategory("autre_alcool")}
+              className={`chip ${category === "autre_alcool" ? "chip-selected" : ""}`}
+            >
+              <span className="text-xl leading-none">🍾</span>
+              <span className="leading-tight">Autre</span>
+            </button>
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label className="field-label" htmlFor="bottle-volume">
-              Contenance (ml)
-            </label>
+        <div>
+          <span className="field-label">Contenance</span>
+          <div className="flex flex-wrap gap-2">
+            {VOLUME_PRESETS.map((v) => (
+              <button
+                key={v}
+                type="button"
+                onClick={() => {
+                  setVolumeMl(v);
+                  setCustomVolume(false);
+                }}
+                className={`chip flex-row! px-3.5 py-2 ${
+                  !customVolume && volumeMl === v ? "chip-selected" : ""
+                }`}
+              >
+                {v >= 1000 ? `${v / 1000} L` : `${v} ml`}
+              </button>
+            ))}
+            <button
+              type="button"
+              onClick={() => setCustomVolume(true)}
+              className={`chip flex-row! px-3.5 py-2 ${customVolume ? "chip-selected" : ""}`}
+            >
+              Autre
+            </button>
+          </div>
+          {customVolume && (
             <input
-              id="bottle-volume"
               type="number"
               min={1}
-              className="field-input"
+              className="field-input mt-2"
+              placeholder="Contenance en ml"
               value={volumeMl}
               onChange={(e) => setVolumeMl(Number(e.target.value) || 0)}
+              autoFocus
             />
-          </div>
-          <div>
-            <label className="field-label" htmlFor="bottle-remaining">
-              Restant (ml)
-            </label>
-            <input
-              id="bottle-remaining"
-              type="number"
-              min={0}
-              className="field-input"
-              value={remainingMl}
-              onChange={(e) => setRemainingMl(Number(e.target.value) || 0)}
-            />
-          </div>
+          )}
         </div>
 
-        <button type="submit" className="btn-primary mt-2 w-full">
-          Enregistrer
+        <div>
+          <span className="field-label">Niveau actuel</span>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => setFullBottle(true)}
+              className={`chip flex-row! flex-1 px-3.5 py-2 ${fullBottle ? "chip-selected" : ""}`}
+            >
+              🆕 Pleine
+            </button>
+            <button
+              type="button"
+              onClick={() => setFullBottle(false)}
+              className={`chip flex-row! flex-1 px-3.5 py-2 ${!fullBottle ? "chip-selected" : ""}`}
+            >
+              🍶 Entamée
+            </button>
+          </div>
+          {!fullBottle && (
+            <div className="mt-3">
+              <input
+                type="range"
+                min={0}
+                max={volumeMl}
+                step={10}
+                value={Math.min(remainingMl, volumeMl)}
+                onChange={(e) => setRemainingMl(Number(e.target.value))}
+                className="w-full accent-[var(--accent)]"
+              />
+              <p className="mt-1 text-center text-sm text-muted-foreground">
+                {Math.round(Math.min(remainingMl, volumeMl))} ml restants sur {volumeMl} ml
+              </p>
+            </div>
+          )}
+        </div>
+
+        <button type="submit" className="btn-primary mt-1 w-full py-3.5">
+          {initial ? "Enregistrer" : "🍾 Ajouter à ma cave"}
         </button>
         {onDelete && (
           <button

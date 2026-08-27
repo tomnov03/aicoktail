@@ -1,17 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fredoka, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { AppDataProvider } from "@/hooks/useAppData";
 import { BottomNav } from "@/components/BottomNav";
 import { ToastProvider } from "@/components/Toast";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const fredoka = Fredoka({
+  variable: "--font-display-raw",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-body-raw",
   subsets: ["latin"],
 });
 
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   applicationName: "AI Coktail",
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
     title: "AI Coktail",
   },
 };
@@ -31,18 +32,12 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fbf7f2" },
-    { media: "(prefers-color-scheme: dark)", color: "#17110c" },
-  ],
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="fr"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="fr" className={`${fredoka.variable} ${jakarta.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <AppDataProvider>
           <ToastProvider>

@@ -131,19 +131,12 @@ export default function RecettesPage() {
           </div>
         ) : errored ? (
           <div className="card py-8 text-center text-sm text-muted-foreground">
-            Impossible de contacter TheCocktailDB pour le moment. Réessaie plus tard, ou{" "}
-            <Link href="/recettes/generer" className="text-accent-strong underline">
-              génère une recette IA
-            </Link>
-            .
+            Impossible de contacter TheCocktailDB pour le moment. Réessaie un peu plus tard.
           </div>
         ) : visible.length === 0 ? (
           <div className="card py-8 text-center text-sm text-muted-foreground">
-            Aucun résultat pour le moment.{" "}
-            <Link href="/recettes/generer" className="text-accent-strong underline">
-              Essaie la génération IA
-            </Link>
-            .
+            Aucun résultat pour le moment. Essaie de décocher le filtre, ou ajoute d&apos;autres
+            bouteilles à ta cave.
           </div>
         ) : (
           <ul className="flex flex-col gap-3">

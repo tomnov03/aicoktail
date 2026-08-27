@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Sheet } from "@/components/Sheet";
-import { CONDIMENT_CATEGORIES } from "@/lib/aliases";
+import { CONDIMENT_CATEGORIES, categoryEmoji } from "@/lib/aliases";
 import type { CondimentCategoryId } from "@/lib/types";
 
 interface Props {
@@ -29,12 +29,42 @@ export function CondimentFormSheet({ open, onClose, onSave }: Props) {
     onClose();
   }
 
+  function pick(c: CondimentCategoryId, label: string) {
+    setCategory(c);
+    if (!name.trim()) setName(label);
+  }
+
   return (
     <Sheet open={open} onClose={onClose} title="Ajouter un condiment">
-      <form onSubmit={submit} className="flex flex-col gap-4">
+      <form onSubmit={submit} className="flex flex-col gap-5">
+        <div>
+          <span className="field-label">Qu&apos;as-tu ajouté ?</span>
+          <div className="grid grid-cols-4 gap-2">
+            {CONDIMENT_CATEGORIES.filter((c) => c.id !== "autre_condiment").map((c) => (
+              <button
+                key={c.id}
+                type="button"
+                onClick={() => pick(c.id as CondimentCategoryId, c.label)}
+                className={`chip ${category === c.id ? "chip-selected" : ""}`}
+              >
+                <span className="text-xl leading-none">{categoryEmoji(c.id)}</span>
+                <span className="leading-tight">{c.label}</span>
+              </button>
+            ))}
+            <button
+              type="button"
+              onClick={() => pick("autre_condiment", "")}
+              className={`chip ${category === "autre_condiment" ? "chip-selected" : ""}`}
+            >
+              <span className="text-xl leading-none">🧺</span>
+              <span className="leading-tight">Autre</span>
+            </button>
+          </div>
+        </div>
+
         <div>
           <label className="field-label" htmlFor="condiment-name">
-            Nom
+            Nom (modifiable)
           </label>
           <input
             id="condiment-name"
@@ -45,25 +75,9 @@ export function CondimentFormSheet({ open, onClose, onSave }: Props) {
             required
           />
         </div>
-        <div>
-          <label className="field-label" htmlFor="condiment-category">
-            Catégorie
-          </label>
-          <select
-            id="condiment-category"
-            className="field-input"
-            value={category}
-            onChange={(e) => setCategory(e.target.value as CondimentCategoryId)}
-          >
-            {CONDIMENT_CATEGORIES.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.label}
-              </option>
-            ))}
-          </select>
-        </div>
-        <button type="submit" className="btn-primary mt-2 w-full">
-          Ajouter
+
+        <button type="submit" className="btn-primary mt-1 w-full py-3.5">
+          🧺 Ajouter à ma cave
         </button>
       </form>
     </Sheet>

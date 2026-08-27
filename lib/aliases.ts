@@ -351,3 +351,58 @@ export function categoryLabel(id: AlcoholCategoryId | CondimentCategoryId): stri
 export function cocktailDbNamesForCategory(id: AlcoholCategoryId): string[] {
   return ALCOHOL_CATEGORIES.find((c) => c.id === id)?.cocktailDbNames ?? [];
 }
+
+const CATEGORY_EMOJI: Partial<Record<AlcoholCategoryId | CondimentCategoryId, string>> = {
+  rhum_blanc: "🥃",
+  rhum_ambre: "🥃",
+  vodka: "🍸",
+  gin: "🍸",
+  tequila: "🌵",
+  whisky: "🥃",
+  cognac_brandy: "🥃",
+  triple_sec: "🍊",
+  vermouth_rouge: "🍷",
+  vermouth_sec: "🍷",
+  liqueur_cafe: "☕",
+  amaretto: "🌰",
+  liqueur_menthe: "🌿",
+  liqueur_cassis: "🍇",
+  malibu: "🥥",
+  limoncello: "🍋",
+  aperol_campari: "🧡",
+  champagne_mousseux: "🥂",
+  vin_blanc: "🍾",
+  vin_rouge: "🍷",
+  biere: "🍺",
+  absinthe_pastis: "🌿",
+  autre_alcool: "🍾",
+  jus_citron_vert: "🟢",
+  jus_citron: "🍋",
+  jus_orange: "🍊",
+  jus_ananas: "🍍",
+  jus_cranberry: "🔴",
+  jus_pamplemousse: "🍊",
+  jus_tomate: "🍅",
+  sirop_sucre: "🍯",
+  grenadine: "🍒",
+  sucre: "🧊",
+  sel: "🧂",
+  soda: "🫧",
+  tonic: "🫧",
+  ginger_beer: "🫚",
+  cola: "🥤",
+  citron_vert_frais: "🟢",
+  citron_frais: "🍋",
+  menthe_fraiche: "🌿",
+  angostura: "💧",
+  oeuf: "🥚",
+  creme: "🥛",
+  lait_coco: "🥥",
+  glacons: "🧊",
+  eau_gazeuse: "💧",
+  autre_condiment: "🧺",
+};
+
+export function categoryEmoji(id: AlcoholCategoryId | CondimentCategoryId): string {
+  return CATEGORY_EMOJI[id] ?? "🍹";
+}

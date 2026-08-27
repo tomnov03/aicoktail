@@ -6,7 +6,7 @@ import { StockBar } from "@/components/StockBar";
 import { BottleFormSheet } from "@/components/BottleFormSheet";
 import { CondimentFormSheet } from "@/components/CondimentFormSheet";
 import { useAppData } from "@/hooks/useAppData";
-import { categoryLabel } from "@/lib/aliases";
+import { categoryLabel, categoryEmoji } from "@/lib/aliases";
 import type { Bottle } from "@/lib/types";
 
 type Tab = "bouteilles" | "condiments";
@@ -68,9 +68,14 @@ export default function CavePage() {
                       }}
                     >
                       <div className="mb-2 flex items-center justify-between gap-2">
-                        <div className="min-w-0">
-                          <p className="truncate font-semibold">{b.name}</p>
-                          <p className="text-xs text-muted-foreground">{categoryLabel(b.category)}</p>
+                        <div className="flex min-w-0 items-center gap-2.5">
+                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent-soft text-lg">
+                            {categoryEmoji(b.category)}
+                          </span>
+                          <div className="min-w-0">
+                            <p className="truncate font-semibold">{b.name}</p>
+                            <p className="text-xs text-muted-foreground">{categoryLabel(b.category)}</p>
+                          </div>
                         </div>
                         {b.remainingMl <= 0 && (
                           <span className="shrink-0 rounded-full bg-danger/15 px-2 py-0.5 text-xs font-medium text-danger">
@@ -96,9 +101,14 @@ export default function CavePage() {
               <ul className="flex flex-col gap-2">
                 {condiments.map((c) => (
                   <li key={c.id} className="card flex items-center justify-between">
-                    <div>
-                      <p className="font-medium">{c.name}</p>
-                      <p className="text-xs text-muted-foreground">{categoryLabel(c.category)}</p>
+                    <div className="flex items-center gap-2.5">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-secondary-soft text-lg">
+                        {categoryEmoji(c.category)}
+                      </span>
+                      <div>
+                        <p className="font-medium">{c.name}</p>
+                        <p className="text-xs text-muted-foreground">{categoryLabel(c.category)}</p>
+                      </div>
                     </div>
                     <button
                       onClick={() => removeCondiment(c.id)}
